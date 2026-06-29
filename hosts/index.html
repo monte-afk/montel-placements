@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register Your Listing — Montel Placements</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --punkn:       #C84B12;
+      --punkn-light: #F4E8E1;
+      --punkn-dark:  #9E3A0D;
+      --ink:         #1A1A1A;
+      --ink-mid:     #4A4A4A;
+      --ink-soft:    #7A7A7A;
+      --surface:     #FFFFFF;
+      --surface-2:   #F8F7F5;
+      --border:      #E5E3DE;
+      --border-focus:#C84B12;
+      --success:     #1BAF7A;
+      --success-bg:  #E8F8F2;
+      --radius-sm:   6px;
+      --radius:      10px;
+      --radius-lg:   16px;
+      --shadow:      0 2px 12px rgba(0,0,0,0.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--surface-2);
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 16px 60px;
+    }
+    .header {
+      padding: 32px 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { display: flex; flex-direction: column; }
+    .logo-wordmark {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--ink);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .logo-wordmark span { color: var(--punkn); }
+    .logo-sub {
+      font-family: 'Dancing Script', cursive;
+      font-size: 14px;
+      color: var(--ink-mid);
+      margin-top: 2px;
+    }
+    .header-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--punkn);
+      background: var(--punkn-light);
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .hero {
+      background: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: var(--punkn);
+      opacity: 0.12;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--punkn);
+      margin-bottom: 10px;
+    }
+    .hero-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+    .hero-title span { color: var(--punkn); }
+    .hero-body {
+      font-size: 13px;
+      color: #A0A09A;
+      line-height: 1.6;
+      max-width: 480px;
+    }
+    .hero-commitment {
+      font-size: 12px;
+      font-style: italic;
+      color: var(--punkn);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+    .hero-promise {
+      display: flex;
+      gap: 20px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .promise-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+    .promise-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--punkn);
+      flex-shrink: 0;
+    }
+    .form-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .form-section {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .form-section:last-of-type { border-bottom: none; }
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--punkn);
+      margin-bottom: 4px;
+    }
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .field { margin-bottom: 14px; }
+    .field:last-child { margin-bottom: 0; }
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-mid);
+      margin-bottom: 5px;
+      letter-spacing: 0.02em;
+    }
+    label .req { color: var(--punkn); margin-left: 2px; }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    select {
+      width: 100%;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      background: var(--surface-2);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    input:focus, select:focus {
+      border-color: var(--border-focus);
+      background: var(--surface);
+      box-shadow: 0 0 0 3px rgba(200,75,18,0.1);
+    }
+    input::placeholder { color: var(--ink-soft); font-weight: 400; }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7A7A' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 32px;
+      cursor: pointer;
+    }
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .pill {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      background: var(--surface-2);
+      color: var(--ink-mid);
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .pill:hover {
+      border-color: var(--punkn);
+      color: var(--punkn);
+      background: var(--punkn-light);
+    }
+    .pill.active {
+      border-color: var(--punkn);
+      background: var(--punkn);
+      color: #FFFFFF;
+    }
+    .listing-set {
+      display: none;
+      padding-top: 4px;
+      margin-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .listing-set.visible { display: block; }
+    .listing-set-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 14px;
+      margin-top: 12px;
+    }
+    .portfolio-large-message {
+      display: none;
+      background: var(--punkn-light);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+    .portfolio-large-message.visible { display: block; }
+    .portfolio-large-message a {
+      color: var(--punkn);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* ── What happens next ── */
+    .next-steps {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    .next-steps-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .next-steps ol {
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .next-steps li {
+      font-size: 12px;
+      color: var(--ink-mid);
+      line-height: 1.5;
+      padding-left: 4px;
+    }
+    .next-steps li::marker {
+      color: var(--punkn);
+      font-weight: 700;
+    }
+
+    /* ── Consent checkbox ── */
+    .consent-field {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 0 0 16px;
+    }
+    .consent-field input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      margin-top: 2px;
+      accent-color: var(--punkn);
+      cursor: pointer;
+    }
+    .consent-field label {
+      font-size: 11px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      cursor: pointer;
+      font-weight: 400;
+      letter-spacing: 0;
+      margin-bottom: 0;
+    }
+    .consent-field label a {
+      color: var(--punkn);
+      text-decoration: none;
+    }
+
+    .form-footer {
+      padding: 24px 28px;
+      background: var(--surface-2);
+      border-top: 1px solid var(--border);
+    }
+    .form-footer.hidden { display: none; }
+    .submit-btn {
+      width: 100%;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      background: var(--punkn);
+      border: none;
+      border-radius: var(--radius);
+      padding: 15px 24px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .submit-btn:hover { background: var(--punkn-dark); }
+    .submit-btn:active { transform: scale(0.99); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .assurance {
+      font-size: 11px;
+      color: var(--ink-soft);
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+    .assurance strong { color: var(--ink-mid); font-weight: 600; }
+    .success-screen {
+      display: none;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 48px 28px;
+      text-align: center;
+    }
+    .success-screen.visible { display: block; }
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--success-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .success-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .success-body {
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.6;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .success-promise {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      background: var(--punkn-light);
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--punkn);
+    }
+    .page-footer {
+      text-align: center;
+      padding: 24px 0 0;
+      font-size: 11px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .page-footer a { color: var(--punkn); text-decoration: none; }
+    @media (max-width: 520px) {
+      .field-row { grid-template-columns: 1fr; }
+      .hero { padding: 24px 20px; }
+      .hero-title { font-size: 21px; }
+      .form-section { padding: 20px 20px; }
+      .form-footer { padding: 20px 20px; }
+      .hero-promise { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="header">
+    <div class="logo">
+      <div class="logo-wordmark">MON<span>T</span>EL</div>
+      <div class="logo-sub">Placements</div>
+    </div>
+    <div class="header-tag">Sydney · 24/7</div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-eyebrow">Host Registration</div>
+    <h1 class="hero-title">Register your <span>listing.</span><br>Start receiving bookings.</h1>
+    <p class="hero-body">
+      Join Sydney's dedicated insurance housing network. Longer stays, reliable payment, no tourist churn.
+    </p>
+    <p class="hero-commitment">Stays typically run 3 weeks to 3 months — longer and more stable than typical Airbnb bookings. Lower fees than other insurance housing platforms.</p>
+    <div class="hero-promise">
+      <div class="promise-item"><div class="promise-dot"></div>Longer stays</div>
+      <div class="promise-item"><div class="promise-dot"></div>Reliable insurer-backed payment</div>
+      <div class="promise-item"><div class="promise-dot"></div>Less guest turnover</div>
+      <div class="promise-item"><div class="promise-dot"></div>10% only on confirmed bookings</div>
+    </div>
+  </div>
+
+  <form id="hostForm" action="https://formspree.io/f/xkolzgkv" method="POST">
+
+    <input type="hidden" name="listing_count" id="listing-count-val" />
+
+    <div class="form-card">
+
+      <!-- Section 1 -->
+      <div class="form-section">
+        <div class="section-label">Section 1 of 2</div>
+        <div class="section-title">Your details</div>
+
+        <div class="field">
+          <label for="full-name">Full name<span class="req">*</span></label>
+          <input type="text" id="full-name" name="full_name" placeholder="James Nguyen" required />
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Phone<span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="0400 000 000" required />
+          </div>
+          <div class="field">
+            <label for="email">Email<span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="james@example.com" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="form-section">
+        <div class="section-label">Section 2 of 2</div>
+        <div class="section-title">Your listings</div>
+
+        <div class="field">
+          <label>How many listings do you have?<span class="req">*</span></label>
+          <div class="pill-group" id="portfolio-group">
+            <div class="pill" onclick="selectPortfolio(this)">1</div>
+            <div class="pill" onclick="selectPortfolio(this)">2</div>
+            <div class="pill" onclick="selectPortfolio(this)">3</div>
+            <div class="pill" onclick="selectPortfolio(this)">4</div>
+            <div class="pill" onclick="selectPortfolio(this)">5+</div>
+          </div>
+        </div>
+
+        <div class="portfolio-large-message" id="portfolioLargeMessage">
+          You have a large portfolio — email us at
+          <a href="mailto:monte@montelstays.com.au">monte@montelstays.com.au</a>
+          and we'll onboard you personally within 24 hours.
+        </div>
+
+        <div id="listingSets">
+
+          <div class="listing-set" id="listing-set-1" data-listing="1">
+            <div class="listing-set-title">Listing 1</div>
+            <div class="field">
+              <label for="listing-1-url">Listing URL (Airbnb / Stayz / Booking.com)<span class="req">*</span></label>
+              <input type="url" id="listing-1-url" name="listing_1_url" placeholder="https://airbnb.com/rooms/..." />
+            </div>
+            <div class="field">
+              <label for="listing-1-rate">Weekly rate range<span class="req">*</span></label>
+              <select id="listing-1-rate" name="listing_1_weekly_rate">
+                <option value="">Select range</option>
+                <option>Under $800/week</option>
+                <option>$800–$1,500/week</option>
+                <option>$1,500–$2,500/week</option>
+                <option>$2,500–$4,000/week</option>
+                <option>$4,000+/week</option>
+                <option>Negotiable — contact me</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="listing-set" id="listing-set-2" data-listing="2">
+            <div class="listing-set-title">Listing 2</div>
+            <div class="field">
+              <label for="listing-2-url">Listing URL (Airbnb / Stayz / Booking.com)<span class="req">*</span></label>
+              <input type="url" id="listing-2-url" name="listing_2_url" placeholder="https://airbnb.com/rooms/..." />
+            </div>
+            <div class="field">
+              <label for="listing-2-rate">Weekly rate range<span class="req">*</span></label>
+              <select id="listing-2-rate" name="listing_2_weekly_rate">
+                <option value="">Select range</option>
+                <option>Under $800/week</option>
+                <option>$800–$1,500/week</option>
+                <option>$1,500–$2,500/week</option>
+                <option>$2,500–$4,000/week</option>
+                <option>$4,000+/week</option>
+                <option>Negotiable — contact me</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="listing-set" id="listing-set-3" data-listing="3">
+            <div class="listing-set-title">Listing 3</div>
+            <div class="field">
+              <label for="listing-3-url">Listing URL (Airbnb / Stayz / Booking.com)<span class="req">*</span></label>
+              <input type="url" id="listing-3-url" name="listing_3_url" placeholder="https://airbnb.com/rooms/..." />
+            </div>
+            <div class="field">
+              <label for="listing-3-rate">Weekly rate range<span class="req">*</span></label>
+              <select id="listing-3-rate" name="listing_3_weekly_rate">
+                <option value="">Select range</option>
+                <option>Under $800/week</option>
+                <option>$800–$1,500/week</option>
+                <option>$1,500–$2,500/week</option>
+                <option>$2,500–$4,000/week</option>
+                <option>$4,000+/week</option>
+                <option>Negotiable — contact me</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="listing-set" id="listing-set-4" data-listing="4">
+            <div class="listing-set-title">Listing 4</div>
+            <div class="field">
+              <label for="listing-4-url">Listing URL (Airbnb / Stayz / Booking.com)<span class="req">*</span></label>
+              <input type="url" id="listing-4-url" name="listing_4_url" placeholder="https://airbnb.com/rooms/..." />
+            </div>
+            <div class="field">
+              <label for="listing-4-rate">Weekly rate range<span class="req">*</span></label>
+              <select id="listing-4-rate" name="listing_4_weekly_rate">
+                <option value="">Select range</option>
+                <option>Under $800/week</option>
+                <option>$800–$1,500/week</option>
+                <option>$1,500–$2,500/week</option>
+                <option>$2,500–$4,000/week</option>
+                <option>$4,000+/week</option>
+                <option>Negotiable — contact me</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /.form-card -->
+
+    <!-- What happens next -->
+    <div class="next-steps" id="nextSteps" style="display:none;">
+      <div class="next-steps-title">What happens next</div>
+      <ol>
+        <li>We'll review your listing within 48 hours</li>
+        <li>You'll receive a confirmation email once your listing is approved and added to our network</li>
+        <li>We'll send you a booking request when we have a family that matches your listing</li>
+        <li>Accept or decline — it's always your call</li>
+        <li>Your listing is never shared with an insurer without your consent</li>
+      </ol>
+    </div>
+
+    <!-- Footer / Submit -->
+    <div class="form-footer hidden" id="formFooter" style="background:white;border-radius:0 0 16px 16px;padding:24px 28px;">
+
+      <div class="consent-field">
+        <input type="checkbox" id="consent" name="consent" required />
+        <label for="consent">I understand that Montel Placements will store my listing details and contact me with booking requests when a family needs a home like mine. My listing will never be shared with an insurer without my prior consent. I can pause or remove my listing from the network at any time by contacting <a href="mailto:monte@montelstays.com.au">Montel Stays</a>.</label>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">
+        Register My Listings
+      </button>
+      <p class="assurance">
+        We'll review your listings and be in touch within <strong>48 hours</strong>.
+        <strong>10% only on confirmed bookings</strong> — no upfront cost to register.
+        <br>Sydney-based. Available 24/7.
+      </p>
+    </div>
+
+  </form>
+
+  <!-- Success Screen -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 13l4 4L19 7" stroke="#1BAF7A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h2 class="success-title">Listings registered.</h2>
+    <p class="success-body">
+      Thanks for joining the Montel Placements host network. We'll review your
+      <strong id="success-count"></strong> and be in touch within 48 hours with next steps.
+    </p>
+    <div class="success-promise">
+      <div class="promise-dot" style="background:var(--punkn)"></div>
+      10% only on confirmed bookings
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <p>Montel Placements — A Montel Stays company</p>
+    <p>Sydney NSW · <a href="tel:+61473777017">0473 777 017</a> · <a href="mailto:monte@montelstays.com.au">monte@montelstays.com.au</a></p>
+    <p style="margin-top:6px">ALE-compliant · Like-for-like standard · 24/7 availability</p>
+  </footer>
+
+</div>
+
+<script>
+  const listingSets = document.querySelectorAll('.listing-set');
+  const portfolioLargeMessage = document.getElementById('portfolioLargeMessage');
+  const formFooter = document.getElementById('formFooter');
+  const nextSteps = document.getElementById('nextSteps');
+  const listingCountInput = document.getElementById('listing-count-val');
+  const form = document.getElementById('hostForm');
+  const successScreen = document.getElementById('successScreen');
+  const submitBtn = document.getElementById('submitBtn');
+
+  function selectPortfolio(el) {
+    document.querySelectorAll('#portfolio-group .pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    listingCountInput.value = el.textContent.trim();
+    updatePortfolioView();
+  }
+
+  function updatePortfolioView() {
+    const count = listingCountInput.value;
+
+    if (!count) {
+      portfolioLargeMessage.classList.remove('visible');
+      listingSets.forEach(set => set.classList.remove('visible'));
+      formFooter.classList.add('hidden');
+      nextSteps.style.display = 'none';
+      return;
+    }
+
+    if (count === '5+') {
+      portfolioLargeMessage.classList.add('visible');
+      listingSets.forEach(set => {
+        set.classList.remove('visible');
+        set.querySelectorAll('input, select').forEach(field => {
+          field.disabled = true;
+          field.removeAttribute('required');
+        });
+      });
+      formFooter.classList.add('hidden');
+      nextSteps.style.display = 'none';
+      return;
+    }
+
+    portfolioLargeMessage.classList.remove('visible');
+    formFooter.classList.remove('hidden');
+    nextSteps.style.display = 'block';
+
+    const num = parseInt(count, 10);
+    listingSets.forEach(set => {
+      const n = parseInt(set.dataset.listing, 10);
+      const fields = set.querySelectorAll('input, select');
+      if (n <= num) {
+        set.classList.add('visible');
+        fields.forEach(field => {
+          field.disabled = false;
+          field.setAttribute('required', '');
+        });
+      } else {
+        set.classList.remove('visible');
+        fields.forEach(field => {
+          field.disabled = true;
+          field.removeAttribute('required');
+          field.value = '';
+        });
+      }
+    });
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const count = listingCountInput.value;
+    if (!count) {
+      alert('Please select how many listings you have.');
+      return;
+    }
+    if (count === '5+') return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    try {
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        const label = count === '1' ? '1 listing' : count + ' listings';
+        document.getElementById('success-count').textContent = label;
+        form.style.display = 'none';
+        nextSteps.style.display = 'none';
+        successScreen.classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Register My Listings';
+        alert('Something went wrong. Please call us directly on 0473 777 017.');
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Register My Listings';
+      alert('Something went wrong. Please call us directly on 0473 777 017.');
+    }
+  });
+</script>
+
+</body>
+</html>
