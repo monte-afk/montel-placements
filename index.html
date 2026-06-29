@@ -443,16 +443,209 @@
   </div>
 
   <!-- Form -->
-  <iframe
-    src="https://tally.so/embed/pbM7YE?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-    loading="lazy"
-    width="100%"
-    height="800"
-    frameborder="0"
-    marginheight="0"
-    marginwidth="0"
-    title="Montel Placements Housing Brief"
-  ></iframe>
+  <form id="briefForm" action="https://formspree.io/f/meebkrgd" method="POST">
+
+    <!-- Hidden fields for pill selections -->
+    <input type="hidden" name="bedrooms" id="bedrooms-val" />
+    <input type="hidden" name="urgency" id="urgency-val" />
+    <input type="hidden" name="duration" id="duration-val" />
+    <input type="hidden" name="special_requirements" id="special-val" />
+
+    <div class="form-card">
+
+      <!-- Section 1: Your Details -->
+      <div class="form-section">
+        <div class="section-label">Section 1 of 3</div>
+        <div class="section-title">Your details</div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="adjuster-name">Your name<span class="req">*</span></label>
+            <input type="text" id="adjuster-name" name="adjuster_name" placeholder="Sarah Chen" required />
+          </div>
+          <div class="field">
+            <label for="insurer">Insurer or firm<span class="req">*</span></label>
+            <input type="text" id="insurer" name="insurer" placeholder="Suncorp, Crawford & Co..." required />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Direct phone<span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="0473 777 017" required />
+          </div>
+          <div class="field">
+            <label for="email">Work email<span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="sarah@insurer.com.au" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="role">Your role<span class="opt">(optional)</span></label>
+          <select id="role" name="role">
+            <option value="">Select your role</option>
+            <option>Claims Adjuster</option>
+            <option>ALE Specialist</option>
+            <option>Housing Coordinator</option>
+            <option>Loss Adjuster</option>
+            <option>Claims Manager</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Section 2: Placement Requirements -->
+      <div class="form-section">
+        <div class="section-label">Section 2 of 3</div>
+        <div class="section-title">Placement requirements</div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="suburb">Suburb of affected property<span class="req">*</span></label>
+            <div class="hint">We match within proximity of this suburb</div>
+            <input type="text" id="suburb" name="suburb" placeholder="Parramatta, Newtown..." required />
+          </div>
+          <div class="field">
+            <label for="max-distance">Max distance from suburb<span class="req">*</span></label>
+            <select id="max-distance" name="max_distance" required>
+              <option value="">Select distance</option>
+              <option>Within 2km</option>
+              <option>Within 5km</option>
+              <option>Within 10km</option>
+              <option>Flexible — open to options</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Bedrooms required<span class="req">*</span></label>
+          <div class="pill-group" id="bedrooms-group">
+            <div class="pill" onclick="selectPill(this,'bedrooms-group','bedrooms-val')">1</div>
+            <div class="pill" onclick="selectPill(this,'bedrooms-group','bedrooms-val')">2</div>
+            <div class="pill" onclick="selectPill(this,'bedrooms-group','bedrooms-val')">3</div>
+            <div class="pill" onclick="selectPill(this,'bedrooms-group','bedrooms-val')">4</div>
+            <div class="pill" onclick="selectPill(this,'bedrooms-group','bedrooms-val')">5+</div>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="adults">Number of adults<span class="req">*</span></label>
+            <select id="adults" name="adults" required>
+              <option value="">Select</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="children">Children<span class="opt">(optional)</span></label>
+            <select id="children" name="children">
+              <option value="None">None</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Estimated duration<span class="req">*</span></label>
+          <div class="pill-group" id="duration-group">
+            <div class="pill" onclick="selectPill(this,'duration-group','duration-val')">1–2 weeks</div>
+            <div class="pill" onclick="selectPill(this,'duration-group','duration-val')">3–4 weeks</div>
+            <div class="pill" onclick="selectPill(this,'duration-group','duration-val')">5–8 weeks</div>
+            <div class="pill" onclick="selectPill(this,'duration-group','duration-val')">2–3 months</div>
+            <div class="pill" onclick="selectPill(this,'duration-group','duration-val')">3+ months</div>
+            <div class="pill" onclick="selectPill(this,'duration-group','duration-val')">Unknown yet</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Move-in urgency<span class="req">*</span></label>
+          <div class="pill-group" id="urgency-group">
+            <div class="pill" onclick="selectPill(this,'urgency-group','urgency-val')">Today</div>
+            <div class="pill" onclick="selectPill(this,'urgency-group','urgency-val')">Within 24 hrs</div>
+            <div class="pill" onclick="selectPill(this,'urgency-group','urgency-val')">Within 48 hrs</div>
+            <div class="pill" onclick="selectPill(this,'urgency-group','urgency-val')">Within a week</div>
+            <div class="pill" onclick="selectPill(this,'urgency-group','urgency-val')">Flexible</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Section 3: Special Requirements -->
+      <div class="form-section">
+        <div class="section-label">Section 3 of 3</div>
+        <div class="section-title">Special requirements &amp; budget</div>
+
+        <div class="field">
+          <label>Select all that apply<span class="opt">(optional)</span></label>
+          <div class="pill-group" id="special-group">
+            <div class="pill multi" onclick="togglePill(this,'special-group','special-val')">Pet friendly</div>
+            <div class="pill multi" onclick="togglePill(this,'special-group','special-val')">Off-street parking</div>
+            <div class="pill multi" onclick="togglePill(this,'special-group','special-val')">Disability access</div>
+            <div class="pill multi" onclick="togglePill(this,'special-group','special-val')">School catchment</div>
+            <div class="pill multi" onclick="togglePill(this,'special-group','special-val')">Fenced yard</div>
+            <div class="pill multi" onclick="togglePill(this,'special-group','special-val')">Ground floor</div>
+            <div class="pill multi" onclick="togglePill(this,'special-group','special-val')">Laundry on premises</div>
+            <div class="pill multi" onclick="togglePill(this,'special-group','special-val')">Garage</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="budget">Weekly ALE limit<span class="opt">(optional)</span></label>
+          <div class="hint">Helps us match within your policy's ALE entitlement</div>
+          <select id="budget" name="ale_weekly_limit">
+            <option value="">Not specified / no preference</option>
+            <option>Up to $800/week</option>
+            <option>Up to $1,200/week</option>
+            <option>Up to $1,800/week</option>
+            <option>Up to $2,500/week</option>
+            <option>Above $2,500/week</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="notes">Anything else we should know<span class="opt">(optional)</span></label>
+          <textarea id="notes" name="notes" placeholder="e.g. family has a large dog, needs to stay near Westmead Hospital, school term starts Monday, CAT event reference..."></textarea>
+        </div>
+      </div>
+
+    </div><!-- /.form-card -->
+
+    <!-- Footer / Submit -->
+    <div class="form-footer" style="background:white;border-radius:0 0 16px 16px;padding:24px 28px;">
+      <button type="submit" class="submit-btn" id="submitBtn">
+        Submit Housing Brief
+      </button>
+      <p class="assurance">
+        We'll contact you within <strong>4 hours</strong> with matched options. 
+        No claim details required. All enquiries handled with full confidentiality.
+        <br>Free to adjusters. Sydney-based. Available 24/7.
+      </p>
+    </div>
+
+  </form>
+
+  <!-- Success Screen -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 13l4 4L19 7" stroke="#1BAF7A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h2 class="success-title">Housing brief received.</h2>
+    <p class="success-body">
+      We're on it. You'll receive three vetted options for <strong id="success-suburb"></strong> 
+      within 4 hours — complete with weekly rates, property details, and ALE documentation ready to go.
+    </p>
+    <div class="success-promise">
+      <div class="promise-dot" style="background:var(--punkn)"></div>
+      Options arriving within 4 hours
+    </div>
+  </div>
 
   <!-- Page Footer -->
   <footer class="page-footer">
@@ -462,5 +655,69 @@
   </footer>
 
 </div><!-- /.page -->
+
+<script>
+  // ── Single-select pills ──
+  function selectPill(el, groupId, hiddenId) {
+    document.querySelectorAll('#' + groupId + ' .pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById(hiddenId).value = el.textContent.trim();
+  }
+
+  // ── Multi-select pills ──
+  function togglePill(el, groupId, hiddenId) {
+    el.classList.toggle('active');
+    const active = [...document.querySelectorAll('#' + groupId + ' .pill.active')]
+      .map(p => p.textContent.trim());
+    document.getElementById(hiddenId).value = active.join(', ');
+  }
+
+  // ── Form submission ──
+  const form = document.getElementById('briefForm');
+  const successScreen = document.getElementById('successScreen');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Basic validation for pills
+    const bedsVal = document.getElementById('bedrooms-val').value;
+    const urgencyVal = document.getElementById('urgency-val').value;
+    const durationVal = document.getElementById('duration-val').value;
+
+    if (!bedsVal) { alert('Please select the number of bedrooms required.'); return; }
+    if (!urgencyVal) { alert('Please select the move-in urgency.'); return; }
+    if (!durationVal) { alert('Please select the estimated duration.'); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    try {
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        const suburb = document.getElementById('suburb').value;
+        document.getElementById('success-suburb').textContent = suburb || 'your area';
+        form.style.display = 'none';
+        successScreen.classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Housing Brief';
+        alert('Something went wrong. Please call us directly on 0473 777 017.');
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Housing Brief';
+      alert('Something went wrong. Please call us directly on 0473 777 017.');
+    }
+  });
+</script>
+
 </body>
 </html>
